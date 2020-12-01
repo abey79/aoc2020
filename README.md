@@ -8,4 +8,5 @@ To use:
 2) Setup your AoC token as per [aocd](https://github.com/wimglenn/advent-of-code-data)
 3) run tests: `pytest`
 4) run mypy: `mypy aoc2020`
+5) run the solution: `python aoc2020/day1.py`
 
