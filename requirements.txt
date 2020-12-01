@@ -1,0 +1,6 @@
+advent-of-code-data
+
+isort
+black
+pytest
+mypy
