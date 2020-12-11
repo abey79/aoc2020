@@ -1,5 +1,6 @@
 numpy
 advent-of-code-data
+numba
 
 isort
 black
