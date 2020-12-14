@@ -47,12 +47,11 @@ def day14_part2(data: str) -> int:
         else:
             addr = int(op.lstrip("mem[").rstrip("]"))
 
-            # convert to bit array
+            # convert to 36-bit array
             addr_bits = np.unpackbits(np.array([addr], dtype=">i8").view(np.uint8))[-36:]
             addr_bits[mask] = 1
 
             for i in range(2 ** floating_bits.sum()):
-                # 64 bit representation
                 bits = np.unpackbits(np.array([i], dtype=">i8").view(np.uint8))
                 addr_bits[floating_bits] = bits[-floating_bits.sum() :]
                 mem[addr_bits.dot(pow_two)] = int(val)
