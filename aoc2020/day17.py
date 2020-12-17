@@ -3,6 +3,7 @@ from collections import Counter
 
 import aocd
 import numpy as np
+from scipy.signal import convolve
 
 
 def update_world(world: np.ndarray) -> np.ndarray:
@@ -72,3 +73,23 @@ def test_day17_pure_python_u_leijurv():
     data = ".#.\n..#\n###"
     assert day17_pure_python_u_leijurv(data, 3) == 112
     assert day17_pure_python_u_leijurv(data, 4) == 848
+
+
+def day17_part2_scipy_u_wimglenn(data):
+    def evolve(A, n=6):
+        kernel = np.ones((3,) * A.ndim, dtype=A.dtype)
+        kernel[(1,) * A.ndim] = 0  # hollow center
+        for _ in range(n):
+            C = convolve(A, kernel)
+            A = np.pad(A, pad_width=1)
+            A = ((A == 1) & ((C == 2) | (C == 3))) | ((A == 0) & (C == 3))
+            A = A.astype(int)
+        return A
+
+    A0 = (np.array([[*r] for r in data.splitlines()]) == "#").astype(int)
+    return evolve(A0[..., None, None]).sum()
+
+
+def test_day17_part2_scipy_u_wimglenn():
+    data = ".#.\n..#\n###"
+    assert day17_part2_scipy_u_wimglenn(data) == 848
