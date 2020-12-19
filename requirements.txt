@@ -5,4 +5,5 @@ numba
 isort
 black
 pytest
+pytest-benchmark
 mypy
