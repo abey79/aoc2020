@@ -1,5 +1,7 @@
 # aoc2020
 
+**⚠️⚠️⚠️ THIS REPOSITORY IS ARCHIVED, ITS CONTENT IS MOVED TO [aoc](https://github.com/abey79/aoc)! ⚠️⚠️⚠️**
+
 My solution to Advent of Code 2020
 
 To use:
